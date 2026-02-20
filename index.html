@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة الإدارة - مطعم آشور</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="login-screen" class="login-container">
+        <div class="login-box">
+            <i class="fa-solid fa-lock login-icon"></i>
+            <h2>لوحة تحكم الإدارة</h2>
+            <input type="password" id="admin-password" placeholder="أدخل كلمة المرور...">
+            <button onclick="checkPassword()">تسجيل الدخول</button>
+        </div>
+    </div>
+
+    <div id="admin-screen" class="admin-container" style="display: none;">
+        <header class="admin-header">
+            <h2>لوحة الإدارة <i class="fa-solid fa-gear"></i></h2>
+            <button class="logout-btn" onclick="logout()">خروج <i class="fa-solid fa-right-from-bracket"></i></button>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('categories')">التصنيفات</button>
+            <button class="tab-btn" onclick="switchTab('products')">المنتجات</button>
+        </div>
+
+        <div id="categories-tab" class="tab-content active">
+            <div class="add-box">
+                <input type="text" id="cat-name" placeholder="اسم التصنيف الجديد (مثال: الحلويات)">
+                <button onclick="saveCategory()" class="action-btn add"><i class="fa-solid fa-plus"></i> حفظ التصنيف</button>
+            </div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>اسم التصنيف</th>
+                        <th>إجراءات</th>
+                    </tr>
+                </thead>
+                <tbody id="categories-list">
+                    </tbody>
+            </table>
+        </div>
+
+        <div id="products-tab" class="tab-content" style="display: none;">
+            <div class="top-actions">
+                <button onclick="openProductModal()" class="action-btn add"><i class="fa-solid fa-plus"></i> إضافة منتج جديد</button>
+            </div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>الصورة</th>
+                        <th>الاسم</th>
+                        <th>التصنيف</th>
+                        <th>السعر</th>
+                        <th>إجراءات</th>
+                    </tr>
+                </thead>
+                <tbody id="products-list">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <h3 id="modal-title">إضافة منتج جديد</h3>
+            
+            <label>اسم المنتج:</label>
+            <input type="text" id="prod-title" placeholder="اسم الوجبة...">
+            
+            <label>الوصف:</label>
+            <textarea id="prod-desc" placeholder="مكونات الوجبة..."></textarea>
+            
+            <label>السعر (بالدينار):</label>
+            <input type="number" id="prod-price" placeholder="مثال: 5000">
+            
+            <label>التصنيف:</label>
+            <select id="prod-category">
+                </select>
+            
+            <label>صورة المنتج:</label>
+            <input type="file" id="prod-image" accept="image/*" onchange="compressImage(event)">
+            <div class="image-preview-container">
+                <img id="image-preview" src="" alt="معاينة الصورة" style="display:none;">
+            </div>
+            
+            <input type="hidden" id="prod-base64">
+            <input type="hidden" id="prod-id">
+
+            <div class="modal-actions">
+                <button onclick="saveProduct()" class="action-btn save">حفظ المنتج</button>
+                <button onclick="closeProductModal()" class="action-btn cancel">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
