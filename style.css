@@ -1,0 +1,94 @@
+/* --- الإعدادات الأساسية --- */
+:root {
+    --primary: #FF5722;
+    --dark: #2f3542;
+    --light: #f8f9fa;
+    --border: #dcdde1;
+    --success: #2ed573;
+    --danger: #ff4757;
+}
+
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Tajawal', sans-serif;
+}
+
+body { background-color: var(--light); color: var(--dark); }
+
+/* --- شاشة تسجيل الدخول --- */
+.login-container {
+    height: 100vh; display: flex; justify-content: center; align-items: center;
+    background: linear-gradient(135deg, var(--dark), #1a1e27);
+}
+
+.login-box {
+    background: #fff; padding: 40px; border-radius: 20px; text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3); width: 90%; max-width: 400px;
+}
+
+.login-icon { font-size: 50px; color: var(--primary); margin-bottom: 20px; }
+.login-box h2 { margin-bottom: 20px; font-weight: 800; }
+.login-box input {
+    width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid var(--border);
+    border-radius: 10px; font-size: 16px; text-align: center;
+}
+.login-box button {
+    width: 100%; padding: 15px; background: var(--primary); color: #fff;
+    border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer;
+}
+
+/* --- تخطيط لوحة الإدارة --- */
+.admin-container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+.admin-header {
+    display: flex; justify-content: space-between; align-items: center;
+    background: #fff; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+.logout-btn {
+    background: var(--danger); color: #fff; border: none; padding: 8px 15px;
+    border-radius: 8px; cursor: pointer; font-weight: bold;
+}
+
+/* --- التبويبات --- */
+.tabs { display: flex; gap: 10px; margin-bottom: 20px; }
+.tab-btn {
+    flex: 1; padding: 15px; background: #fff; border: 1px solid var(--border);
+    border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; color: var(--dark);
+}
+.tab-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+.tab-content { background: #fff; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+
+/* --- الجداول والنماذج --- */
+.add-box, .top-actions { margin-bottom: 20px; display: flex; gap: 10px; }
+.add-box input { flex: 1; padding: 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 15px; }
+
+.action-btn { padding: 10px 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; color: #fff; }
+.action-btn.add { background: var(--success); }
+.action-btn.edit { background: var(--telegram, #0088cc); margin-left: 5px; }
+.action-btn.delete { background: var(--danger); }
+.action-btn.save { background: var(--primary); width: 100%; margin-bottom: 10px; padding: 15px; font-size: 16px; }
+.action-btn.cancel { background: var(--text-muted, #747d8c); width: 100%; padding: 15px; font-size: 16px; }
+
+.data-table { width: 100%; border-collapse: collapse; text-align: right; }
+.data-table th, .data-table td { padding: 15px; border-bottom: 1px solid #f1f2f6; }
+.data-table th { background: #f8f9fa; font-weight: 800; }
+.product-img-cell { width: 60px; height: 60px; object-fit: cover; border-radius: 10px; border: 1px solid var(--border); }
+
+/* --- النافذة المنبثقة (Modal) --- */
+.modal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6);
+    display: none; justify-content: center; align-items: center; z-index: 1000;
+}
+.modal.show { display: flex; }
+.modal-content { background: #fff; width: 90%; max-width: 500px; padding: 25px; border-radius: 20px; max-height: 90vh; overflow-y: auto; }
+.modal-content h3 { margin-bottom: 20px; text-align: center; font-size: 22px; }
+.modal-content label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 14px; }
+.modal-content input[type="text"], .modal-content input[type="number"], .modal-content textarea, .modal-content select, .modal-content input[type="file"] {
+    width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid var(--border); border-radius: 8px; font-size: 15px;
+}
+.modal-content textarea { height: 80px; resize: none; }
+.image-preview-container { text-align: center; margin-bottom: 15px; }
+#image-preview { width: 100%; height: 140px; object-fit: cover; border-radius: 10px; border: 1px solid var(--border); }
